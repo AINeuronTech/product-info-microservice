@@ -1,51 +1,48 @@
 package com.commerce.productinfoservices.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Product")
 public class Product {
-    public String productId;
-    public String name;
-    public int price;
-    public String description;
 
-    public Product(){}
-    public Product(String productId, String name, int price, String description) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
-        this.description = description;
+    @Id
+    int prodId;
+    String prodName;
+    String prodPrice;
+
+    public Product() {
     }
 
-    public Product(String productId, String productName, String productOverview) {
+    public Product(int prodId, String prodName, String prodPrice) {
+        this.prodId = prodId;
+        this.prodName = prodName;
+        this.prodPrice = prodPrice;
     }
 
-    public String getProductId() {
-        return productId;
+    public int getProdId() {
+        return prodId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProdId(int prodId) {
+        this.prodId = prodId;
     }
 
-    public String getName() {
-        return name;
+    public String getProdName() {
+        return prodName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProdName(String prodName) {
+        this.prodName = prodName;
     }
 
-    public int getPrice() {
-        return price;
+    public String getProdPrice() {
+        return prodPrice;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProdPrice(String prodPrice) {
+        this.prodPrice = prodPrice;
     }
 }
