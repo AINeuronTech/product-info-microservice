@@ -43,17 +43,17 @@ public class ProductInfoServices {
     public ResponseEntity<Void> createProfile(@RequestBody Product product, UriComponentsBuilder uriComponentsBuilder){
         productService.createProduct(product);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(uriComponentsBuilder.path("/api/{id}").buildAndExpand(product.getProdId()).toUri());
+        headers.setLocation(uriComponentsBuilder.path("/api/{id}").buildAndExpand(product.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/updateProduct", headers = "Accept=application/json")
     public ResponseEntity<String> updateProfile(@RequestBody Product currentProduct){
-        Optional<Product> updatedProduct = productService.findProductById(currentProduct.getProdId());
+        Optional<Product> updatedProduct = productService.findProductById(currentProduct.getId());
         if(updatedProduct==null){
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
-        productService.updateProduct(currentProduct,currentProduct.getProdId());
+        productService.updateProduct(currentProduct,currentProduct.getId());
         return new ResponseEntity<String>(HttpStatus.OK);
 
     }
