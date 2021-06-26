@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-info-docker
+  name: product-info-kube
 spec:
   selector:
     matchLabels:
-      app: product-info-docker
+      app: product-info-kube
   replicas: 3
   template:
     metadata:
       labels:
-        app: product-info-docker
+        app: product-info-kube
     spec:
       containers:
-        - name: product-info-docker
-          image: product-info-docker:1.0
+        - name: product-info-kube
+          image: product-info-kube:1.0
           ports:
             - containerPort: 8087
